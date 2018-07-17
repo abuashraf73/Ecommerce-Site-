@@ -72,18 +72,42 @@ h1{
 </style>
 
 <?php 
-session_start();
-include("c:/xamp/htdocs/482/admin_area/includes/db.php");
+include("admin_area/includes/db.php");
+//login-logout script here
+if(isset($_POST['login'])){
+    $c_email = $_POST['email'];
+    $c_pass = $_POST['password']; 
+     $sel_c ="select * from customers where customer_pass='$c_pass' AND customer_email= '$c_email'";
+     $run_c = mysqli_query($con, $sel_c);
+     $check_customer = mysqli_num_rows($run_c);
+     if($check_customer==0){
+        echo "<script>alert('Password or email is incorrect')</script>";
+        exit(); //if the email and password is wrong then futher codes wont work
+     }
+     $ip= getIp();
+      $sel_cart = "select * from cart where ip_add='$ip'";
+    $run_cart = mysqli_query($con, $sel_cart);
+    $check_cart = mysqli_num_rows($run_cart);
+    if($check_customer >0 AND $check_cart ==  0){
+           $_SESSION['c_email'] = $c_email;
+       echo "<script>alert('Logged in successfully')</script>";
+       echo "<script>window.open('my_account.php','_self')</script>";  
+    }else{
+         $_SESSION['c_email'] = $c_email;
+       echo "<script>alert('Logged in successfully')</script>";
+       echo "<script>window.open('checkout.php','_self')</script>";
+    }
+}
  ?>
       <div class="login-box">
           <img src="login_page/avatar.png" class="avatar">
           <h1>Login/SignUp</h1>
             <form method="post" >
             <p>Username</p>
-            <input type="text" name="email" placeholder="Enter Username">
+            <input type="text" name="email" placeholder="Enter User email" required>
             <p>Password</p>
-            <input type="password" name="password" placeholder="Enter Password">
-            <input type="submit" name="submit" value="Login" formaction="#">
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <input type="submit" name="login" value="Login" formaction="#">
             <input type="submit" name="signup" value="Sign Up" formaction="login_page/customer_register.php">
             <a href="checkout.php?forgot_pass">Forget Password? </a>
             </form>

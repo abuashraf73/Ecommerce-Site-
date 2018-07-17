@@ -51,13 +51,24 @@ table, th, td {
 			<div id="content_area">
 				<?php cart(); ?>
 				<div id="shopping_cart">
-					<span style="float: left; font-size: 18px;
-					padding: 5px;
-					line-height: 40px;
-					color: white;"> Welcome Guest!
-					<b style="color:black; align:center;">Shopping Cart--></b> Total Items: <?php total_items(); ?>
+					<span style="float: left; font-size: 18px;padding: 5px;line-height: 40px;color: white;"> 
+					<?php 
+					if(isset($_SESSION['c_email'])){
+					echo "<b>Welcome: </b>".$_SESSION['c_email']."<b style='color:yellow;'> Your</b>";}
+					else{
+						echo "<b>Welcome guest..</b>";
+					} ?>
+
+					<b style="color:yellow; align:center;">Shopping Cart--></b> Total Items: <?php total_items(); ?>
 					 Total Price: <?php total_price(); ?>
-					<a href="cart.php" style="color:yellow;">Go to cart</a>
+					<a href="home.php" style="color:yellow;">Back to shop</a>
+					<?php 
+					if(!isset($_SESSION['c_email'])){
+						echo "<a href='checkout.php'>Login</a> ";
+					}
+					else{
+						echo "<a href='logout.php'>Log out</a>'";
+					} ?>
 					</span>
 					
 				</div>

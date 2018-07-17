@@ -54,8 +54,13 @@ include("functions/functions.php"); ?>
 					<span style="float: right; font-size: 18px; 
 					padding: 5px;
 					line-height: 40px;
-					color: white;"> Welcome Guest!
-					<b style="color:black;">Shopping Cart--></b> Total Items: <?php total_items(); ?>
+					color: white;"> <?php 
+					if(isset($_SESSION['c_email'])){
+					echo "<b>Welcome: </b>".$_SESSION['c_email']."<b style='color:yellow;'> Your</b>";}
+					else{
+						echo "<b>Welcome guest</b>";
+					} ?>
+					<b style="color:yellow;">Shopping Cart--></b> Total Items: <?php total_items(); ?>
 					 Total Price: <?php total_price(); ?>
 					<a href="cart.php" style="color:yellow;">Go to cart</a>
 					<?php 
