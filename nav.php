@@ -38,7 +38,7 @@
 <body>
 	<ul id="menu">
 	      <li><a href="home.php">Home</a></li>
-	      <li><a href="login_page/customer_login.php">My Account</a></li>
+	      <li><a href="myaccount.php">My Account</a></li>
 	      <li><a href="cart.php">My Cart</a></li>
 	      <li><a href="login_page/customer_register.php">Sign Up</a></li>
 	      <li><a href="aboutus.php">About Us</a></li>
