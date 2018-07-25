@@ -100,7 +100,7 @@ if(isset($_POST['login'])){
 }
  ?>
       <div class="login-box">
-          <img src="login_page/avatar.png" class="avatar">
+          <img src="images/avatar.png" class="avatar">
           <h1>Login/SignUp</h1>
             <form method="post" >
             <p>Username</p>
@@ -108,7 +108,7 @@ if(isset($_POST['login'])){
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password" required>
             <input type="submit" name="login" value="Login" formaction="#">
-            <a href="login_page/customer_register.php"><button style="background-color: #f44336; /* Green */
+            <a href="customer_register.php"><button style="background-color: #f44336; /* Green */
                                 border: none;
                                 color: white;
                                 padding: 5px 3px;

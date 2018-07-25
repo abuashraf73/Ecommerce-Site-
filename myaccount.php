@@ -73,7 +73,9 @@ include("functions/functions.php"); ?>
           } ?>
           </span>
         </div>
-                    
+                    <div>
+                    <h1>welcome <?php echo $c_name; ?></h1>  
+                    </div>
                     
 
           

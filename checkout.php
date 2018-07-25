@@ -64,7 +64,7 @@ include("functions/functions.php"); ?>
 				<div id="products_box">
 					<?php 
 					if(!isset($_SESSION['c_email'])){
-						include("login_page/customer_login.php");
+						include("customer_login.php");
 					}
 					else{
 						include("payment.php");

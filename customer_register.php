@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php 
 session_start();
-include("C:/xampp/htdocs/482/482Main/admin_area/includes/db.php");
-include("C:/xampp/htdocs/482/482Main/functions/functions.php");
+include("admin_area/includes/db.php");
+include("functions/functions.php");
  ?>
 <html>
 <head>
@@ -53,7 +53,7 @@ include("C:/xampp/htdocs/482/482Main/functions/functions.php");
 </script>
     <body>
       <div class="login-box">
-          <img src="avatar.png" class="avatar">
+          <img src="images/avatar.png" class="avatar">
           <h1>SignUp</h1>
           <form action="customer_register.php" method="post" enctype="multipart/form-data">
            <p>Full Name</p>
@@ -112,11 +112,11 @@ if(isset($_POST['register'])){
     if($check_cart== 0){
       $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Account has been created')</script>";
-       echo "<script>window.open('C:/xampp/htdocs/482/482Main/my_account.php','_top')</script>";
+       echo "<script>window.open('my_account.php','_top')</script>";
     }else{
         $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Account has been created')</script>";
-       echo "<script>window.open('C:/xampp/htdocs/482/482Main/checkout.php','_top')</script>";
+       echo "<script>window.open('checkout.php','_top')</script>";
     }
 } 
 ?>
