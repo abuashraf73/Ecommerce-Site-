@@ -34,7 +34,7 @@ include("functions/functions.php");
       if(email_val=="" || email_val.indexOf('@') == -1|| email_val.indexOf(".") == -1){
         alert('Enter a valid email address');
       }
-      if(pass_val=="" || pass_val.length<8){
+      if(pass_val=="" || pass_val.length<5){
         alert('Enter a valid password');
       }
       if(pass_val!=cpass_val){
@@ -82,7 +82,7 @@ include("functions/functions.php");
             <p>Password</p>
             <input type="password" name="c_password" id="c_password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <p>Confirm password</p>
-            <input type="password" name= "confirmpassword" id="confirmpassword" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+            <input type="password" name= "confirmpassword" id="confirmpassword" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 
             <input type="submit" name="register" value="SUBMIT">
             

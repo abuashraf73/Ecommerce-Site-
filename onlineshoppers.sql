@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2018 at 07:36 PM
+-- Generation Time: Jul 25, 2018 at 07:04 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -39,7 +39,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`p_id`, `ip_add`, `qty`) VALUES
-(14, '::1', 0);
+(20, '::1', 0);
 
 -- --------------------------------------------------------
 
@@ -75,9 +75,22 @@ CREATE TABLE `customers` (
   `customer_pass` varchar(100) NOT NULL,
   `customer_city` text NOT NULL,
   `customer_location` text NOT NULL,
-  `customer_contact` varchar(255) NOT NULL,
-  `customer_image` text NOT NULL
+  `customer_contact` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `customer_ip`, `customer_name`, `customer_email`, `customer_pass`, `customer_city`, `customer_location`, `customer_contact`) VALUES
+(28, '::1', 'Farhana Naznin', 'farhanazim72@gmail.com', 'Abuashraf1993', 'Dhaka', 'malibagh', '01631179192'),
+(29, '::1', 'abu ashraf', 'abuasrhraf00@yahoo.com', 'Abuashraf1993', 'Dhaka', 'malibagh', '01674200740'),
+(30, '::1', 'saad hossain', 'saadhossain@gmail.com', 'Saad12345', 'Barishal', 'asasds', '12345678910'),
+(32, '::1', 'prome', 'prome@gmail.com', 'Abuashraf1993', 'Sylhet', 'malibagh', '1234567891011'),
+(33, '::1', 'saasd', 'prome@gmail.com', 'Abuashraf1993', 'Dhaka', 'malibagh', '1110987654321'),
+(34, '::1', '', '', '', 'Dhaka', '', ''),
+(35, '::1', 'Farhana Naznin', 'farhanazim72@gmail.com', 'Abuashraf1993', 'Khulna', 'malibagh', '1110987654321'),
+(36, '::1', 'saasd', 'farhanazim72@gmail.com', 'Abuashraf1993', 'Dhaka', 'malibagh', '1234567891011');
 
 -- --------------------------------------------------------
 
@@ -172,6 +185,12 @@ ALTER TABLE `types`
 --
 ALTER TABLE `catagories`
   MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `products`

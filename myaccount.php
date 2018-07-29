@@ -74,7 +74,25 @@ include("functions/functions.php"); ?>
           </span>
         </div>
                     <div>
-                    <h1>welcome <?php echo $c_name; ?></h1>  
+                    <h1 align="center">welcome <?php echo $c_name; ?></h1> 
+                    <br>
+                    <?php 
+                    if(!isset($_GET['my_orders'])){
+                      if(!isset($_GET['edit_account'])){
+                        if(!isset($_GET['change_pass'])){
+                          if(!isset($_GET['delete_account'])){
+                     echo "<h3 align='center'>See progress <a href='myaccount.php?my_orders'>LINk</a></h3> ";
+                     }
+                   }
+                    }
+                  }
+                    ?>
+                    <?php 
+                    if(isset($_GET['edit_account'])){
+                      include("edit_account.php");
+                    
+                    }
+                     ?>
                     </div>
                     
 
