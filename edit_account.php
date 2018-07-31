@@ -4,6 +4,7 @@
                        $get_customer = "select * from customers where customer_email = '$user'";
                        $run_customer= mysqli_query($con,$get_customer);
                        $row_customer = mysqli_fetch_array($run_customer);
+                       $c_id = $row_customer['customer_id'];
                        $name = $row_customer['customer_name'];
                        $email = $row_customer['customer_email'];
                        $pass = $row_customer['customer_pass'];
@@ -62,7 +63,7 @@
            
 
             <tr>
-              <td align="right"><input type="submit" name="register" value="update Account"></td>
+              <td align="right"><input type="submit" name="update" value="update Account"></td>
             </tr>
             
             </table>
@@ -72,31 +73,25 @@
          
      
 <?php 
-if(isset($_POST['register'])){
+if(isset($_POST['update'])){
     $ip = getIp();
+    $customer_id=$c_id;
     $c_name = $_POST['c_name'];
     $c_email = $_POST['c_email'];
     $c_phone = $_POST['c_phone'];
     $c_city = $_POST['c_city'];
     $c_loc = $_POST['c_loc'];
-   
     $c_password = $_POST['c_password'];
 
   
-//for inserting the data of customer into database
-    $insert_c ="INSERT INTO customers(customer_ip,customer_name,customer_email,customer_pass,customer_city, customer_location,customer_contact)   VALUES ('$ip','$c_name','$c_email','$c_password','$c_city','$c_loc','$c_phone')";
-    $run_c = mysqli_query($con, $insert_c);
-    $sel_cart = "select * from cart where ip_add='$ip'";
-    $run_cart = mysqli_query($con, $sel_cart);
-    $check_cart = mysqli_num_rows($run_cart);
-    if($check_cart== 0){
-      $_SESSION['c_email'] = $c_email;
-       echo "<script>alert('Account has been created')</script>";
-       echo "<script>window.open('my_account.php','_top')</script>";
-    }else{
-        $_SESSION['c_email'] = $c_email;
-       echo "<script>alert('Account has been updated')</script>";
-       echo "<script>window.open('checkout.php','_top')</script>";
+//for updating the data of customer into database
+    $update_c ="update customers set customer_name='$c_name',
+    customer_email='$c_email', customer_location='$c_loc' , customer_city='$c_city' , customer_contact= '$c_phone', customer_pass='$c_password' where customer_ip='$ip'";
+    $run_update = mysqli_query($con, $update_c);
+  
+    if($run_update){
+      echo "<script>alert('Account updated')</script>";
+      echo "<script>window.open('myaccount.php','_self')</script>";
     }
 } 
 ?>
