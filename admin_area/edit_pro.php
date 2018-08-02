@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <?php 
 include ("includes/db.php"); 
+
+if(isset($_GET['edit_pro'])){
+	$get_id= $_GET['edit_pro'];
+	$get_pro = "select * from products where product_id= '$get_id'";
+	$run_pro = mysqli_query($con, $get_pro);
+	$i = 0;
+	while($row_pro = mysqli_fetch_array($run_pro)){
+	$pro_id = $row_pro['product_id'];
+	$pro_title = $row_pro['product_title'];
+	$pro_image = $row_pro['product_image'];
+	$pro_price = $row_pro['product_price'];
+}
 ?>
 <html>
 <head>

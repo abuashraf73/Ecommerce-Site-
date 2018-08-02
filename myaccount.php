@@ -41,8 +41,7 @@ include("functions/functions.php"); ?>
                        <br>
                          <li><a href="myaccount.php?my_orders">My orders</a></li>
                          <li><a href="myaccount.php?edit_account">Edit Account</a></li>
-                         <li><a href="myaccount.php?change_pass">Change password</a></li>
-                         <li><a href="myaccount.php?delete_account">Delete account</a></li>
+                        
 
                     </ul>
                     <br>
