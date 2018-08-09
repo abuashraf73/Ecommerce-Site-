@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <?php 
 include ("includes/db.php"); 
-
+//for feteching all the products from the database
 if(isset($_GET['edit_pro'])){
 	$get_id= $_GET['edit_pro'];
 	$get_pro = "select * from products where product_id= '$get_id'";
 	$run_pro = mysqli_query($con, $get_pro);
 	$i = 0;
-	while($row_pro = mysqli_fetch_array($run_pro)){
+	$row_pro = mysqli_fetch_array($run_pro);
 	$pro_id = $row_pro['product_id'];
 	$pro_title = $row_pro['product_title'];
 	$pro_image = $row_pro['product_image'];
 	$pro_price = $row_pro['product_price'];
+	$pro_desc  = $row_pro['product_description'];
+	$pro_key  = $row_pro['product_keyword'];
+	$pro_cat = $row_pro['product_category'];
+	$pro_type = $row_pro['product_type'];
+
+	//for getting the categoery name instead of numbers
+	$get_cat = "select * from categories where category_id='$pro_cat'";
+	$run_cat = mysqli_query($con, $get_cat);
+	$row_cat = mysqli_fetch_array($run_cat);
+	$category_title = $row_cat['category_title'];
+
+	//for getting the type name instead of numbers
+	$get_type = "select * from types where type_id='$pro_type'";
+	$run_type = mysqli_query($con, $get_type);
+	$row_type = mysqli_fetch_array($run_type);
+	$type_title = $row_type['type_title'];
+
+
 }
 ?>
 <html>
@@ -20,24 +38,24 @@ if(isset($_GET['edit_pro'])){
 	<style type="text/css">
 		body{
 			background-color: lightblue;
-		}
+		
 	</style>
 </head>
 <body>
 <form action="insert_product.php" method="post" enctype="multipart/form-data">
 	<table align="center" width="800" height="600" border="5" bgcolor="skyblue">
 		<tr align="center">
-			<td colspan="20"><h2 align="center"><strong>Insert New Product here</strong></h2></td>
+			<td colspan="20"><h2 align="center"><strong>Edit & Update Product</strong></h2></td>
 		</tr>
 		<tr>
 			<td align="right">Product Title:</td>
-			<td><input type="text" name="product_title" size="50" /></td>
+			<td><input type="text" name="product_title" size="50" value="<?php echo $pro_title; ?>" /></td>
 		</tr>
 		
 		<tr>
 			<td align="right">Product Category:</td>
 			<td><select name="product_category" >
-				<option>Select Category</option>
+				<option><?php echo $category_title; ?></option>
 				<!--Getting the category list directly from the database -->
 				<?php
 					 $get_cats = "select * from catagories";
@@ -52,24 +70,24 @@ if(isset($_GET['edit_pro'])){
 
 		<tr>
 			<td align="right">Product Price(tk):</td>
-			<td><input type="text" name="product_price"></td>
+			<td><input type="text" name="product_price" value="<?php echo $pro_price; ?>" ></td>
 		</tr>
 		<tr>
 			<td align="right">Product Description:</td>
-			<td ><textarea name="product_description" cols="60" rows="20"></textarea></td>
+			<td ><textarea name="product_description" cols="60" rows="10"><?php echo $pro_desc; ?></textarea></td>
 		</tr>
 		<tr>
 			<td align="right">Product Image:</td>
-			<td><input type="file" name="product_image"></td>
+			<td><input type="file" name="product_image"><img src="product_images/<?php echo $pro_image; ?>" width="80" height="100"/></td>
 		</tr>
 		<tr>
 			<td align="right">Product Keyword:</td>
-			<td><input type="text" name="product_keyword" size="60" ></td>
+			<td><input type="text" name="product_keyword" size="60" value="<?php echo $pro_key; ?>" ></td>
 		</tr>
 		<tr>
 			<td align="right">Product Type:</td>
 			<td><select name="product_type">
-				<option>Select Product Type</option>
+				<option><?php echo $type_title; ?></option>
 				<!--Getting the types list directly from the database -->
 				<?php
 				$get_type = "select * from types";
@@ -83,7 +101,7 @@ if(isset($_GET['edit_pro'])){
 			</select></td>
 		</tr>
 		<tr align="center">
-			<td colspan="8"><input type="submit" name="insert_post" value="INSERT"/></td>
+			<td colspan="8"><input type="submit" name="update_product" value="UPDATE"/></td>
 		</tr>
 	</table>
 </form>
