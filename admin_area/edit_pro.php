@@ -42,7 +42,7 @@ if(isset($_GET['edit_pro'])){
 	</style>
 </head>
 <body>
-<form action="insert_product.php" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 	<table align="center" width="800" height="600" border="5" bgcolor="skyblue">
 		<tr align="center">
 			<td colspan="20"><h2 align="center"><strong>Edit & Update Product</strong></h2></td>
@@ -110,8 +110,9 @@ if(isset($_GET['edit_pro'])){
 <!-- Putting data from the form to the database -->
 <?php 
 
-if (isset($_POST['insert_post'])) {
+if (isset($_POST['update_product'])) {
 	//getting the text from the form
+	$update_id = $pro_id;
 	$product_title = $_POST['product_title'];
 	$product_category = $_POST['product_category'];
 	$product_price = $_POST['product_price'];
@@ -126,11 +127,11 @@ if (isset($_POST['insert_post'])) {
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	
 	//database query to insert data to the database
-	 $insert_product="INSERT INTO products(product_title,product_category,product_price,	product_description,product_image,product_keyword,product_type) 		VALUES('$product_title','$product_category','$product_price','$product_description','$target_file','$product_keyword','$product_type')";
+	 $update_product="update products set product_category='$product_category', product_type='$product_type', product_title='$product_title', product_price='$product_price',product_description='$product_description', product_image='$target_file', product_keyword='$product_keyword' where product_id='$update_id'";
 
-	if(mysqli_query($con,$insert_product)){	
-		echo "<script>alert('Product has been added')</script>";
-		echo"<script>window.open('index.php?insert_product','_self')</script>";		
+	if(mysqli_query($con,$update_product)){	
+		echo "<script>alert('Product has been updated')</script>";
+		echo"<script>window.open('index.php?view_product','_self')</script>";		
 	}else{
 		echo "ERROR: Could not able to execute sql. " . mysqli_error($con);
 	}

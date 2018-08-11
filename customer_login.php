@@ -91,7 +91,7 @@ if(isset($_POST['login'])){
     if($check_customer >0 AND $check_cart ==  0){
            $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Logged in successfully')</script>";
-       echo "<script>window.open('my_account.php','_self')</script>";  
+       echo "<script>window.open('myaccount.php','_self')</script>";  
     }else{
          $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Logged in successfully')</script>";
