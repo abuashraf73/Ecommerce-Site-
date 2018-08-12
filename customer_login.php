@@ -104,21 +104,11 @@ if(isset($_POST['login'])){
           <h1>Login/SignUp</h1>
             <form method="post" >
             <p>Username</p>
-            <input type="text" name="email" placeholder="Enter User email" required>
+            <input type="text" name="email" placeholder="Enter User email" >
             <p>Password</p>
-            <input type="password" name="password" placeholder="Enter Password" required>
-            <input type="submit" name="login" value="Login" formaction="#">
-            <a href="customer_register.php"><button style="background-color: #f44336; /* Green */
-                                border: none;
-                                color: white;
-                                padding: 5px 3px;
-                             
-                                text-align: center;
-                                text-decoration: none;
-                                display: inline-block;
-                                margin: 5px 2px;
-                                cursor: pointer;
-                        ">Sign up</button></a> <br>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="login" value="Login">
+           <h1> <a href="customer_register.php">Sign up</a> <br></h1> 
             <a href="checkout.php?forgot_pass">Forget Password? </a>
             </form>
         </div>
