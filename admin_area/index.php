@@ -18,7 +18,13 @@
 		}
 		if(isset($_GET['edit_pro'])){
 			include("edit_pro.php");
-		} ?>
+		} 
+		if(isset($_GET['insert_cat'])){
+			include("insert_cat.php");
+		}
+		if(isset($_GET['view_cats'])){
+			include("view_cats.php");
+		}?>
 	</div>
 	<div id="right"><br>
 <h2 style="text-align:center;"><u>Manage Content</u></h2>
@@ -26,7 +32,7 @@
 <a href="index.php?insert_product">Insert Product</a>
 <a href="index.php?view_product">View Products</a>
 <a href="index.php?insert_cat">Insert Category</a>
-<a href="index.php?view_cat">View All Categories</a>
+<a href="index.php?view_cats">View All Categories</a>
 <a href="index.php?insert_types">Insert Types</a>
 <a href="index.php?view_types">View All Types</a>
 <a href="index.php?view_customers">View Customers</a>
