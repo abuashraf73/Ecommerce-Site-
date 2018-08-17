@@ -24,6 +24,18 @@
 		}
 		if(isset($_GET['view_cats'])){
 			include("view_cats.php");
+		}
+		if(isset($_GET['edit_cat'])){
+			include("edit_cat.php");
+		}
+		if(isset($_GET['insert_types'])){
+			include("insert_type.php");
+		}
+		if(isset($_GET['view_types'])){
+			include("view_types.php");
+		}
+		if(isset($_GET['edit_type'])){
+			include("edit_type.php");
 		}?>
 	</div>
 	<div id="right"><br>
