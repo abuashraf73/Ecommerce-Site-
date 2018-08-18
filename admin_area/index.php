@@ -36,6 +36,9 @@
 		}
 		if(isset($_GET['edit_type'])){
 			include("edit_type.php");
+		}
+		if(isset($_GET['view_customers'])){
+			include("view_customers.php");
 		}?>
 	</div>
 	<div id="right"><br>

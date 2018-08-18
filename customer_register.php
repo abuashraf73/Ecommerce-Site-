@@ -112,7 +112,7 @@ if(isset($_POST['register'])){
     if($check_cart== 0){
       $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Account has been created')</script>";
-       echo "<script>window.open('my_account.php','_top')</script>";
+       echo "<script>window.open('myaccount.php','_top')</script>";
     }else{
         $_SESSION['c_email'] = $c_email;
        echo "<script>alert('Account has been created')</script>";
