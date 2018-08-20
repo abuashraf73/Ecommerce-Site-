@@ -101,7 +101,7 @@ if(isset($_POST['login'])){
  ?>
       <div class="login-box">
           <img src="images/avatar.png" class="avatar">
-          <h1>Login/SignUp</h1>
+          <h1>Login</h1>
             <form method="post" >
             <p>Username</p>
             <input type="text" name="email" placeholder="Enter User email" >

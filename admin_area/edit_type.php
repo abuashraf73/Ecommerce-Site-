@@ -1,5 +1,9 @@
 <?php //to fetch all the category list from the database
 include("includes/db.php");
+if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
+}
+else{
 if(isset($_GET['edit_type'])){
 	$type_id = $_GET['edit_type'];
 	$get_type ="select *from types where type_id='$type_id'";
@@ -29,3 +33,4 @@ if($run_type){
 	echo"<script>window.open('index.php?view_types','_self')</script>";
 }}
  ?>
+<?php } ?>

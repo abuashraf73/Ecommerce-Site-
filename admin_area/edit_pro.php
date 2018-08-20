@@ -2,6 +2,10 @@
 <?php 
 include ("includes/db.php"); 
 //for feteching all the products from the database
+if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
+}
+else{
 if(isset($_GET['edit_pro'])){
 	$get_id= $_GET['edit_pro'];
 	$get_pro = "select * from products where product_id= '$get_id'";
@@ -140,3 +144,5 @@ if (isset($_POST['update_product'])) {
 } 
 
 ?>
+
+<?php } ?>

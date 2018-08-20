@@ -5,6 +5,10 @@
 </form>
 <?php 
 include("includes/db.php");
+if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
+}
+else{
 if(isset($_POST['add_cat'])){
 $new_cat = $_POST['new_cat'];
 $insert_cat = "insert into catagories (category_title) values('$new_cat')";
@@ -14,3 +18,4 @@ if($run_cat){
 	echo"<script>window.open('index.php?view_cats','_self')</script>";
 }}
  ?>
+<?php } ?>

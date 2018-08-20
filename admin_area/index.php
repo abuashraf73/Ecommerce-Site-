@@ -1,3 +1,14 @@
+<?php 
+session_start(); //admnin login section
+if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
+}
+else{
+
+//if the user is admin then he/she see this action
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +20,7 @@
 	<div id="header">
 	</div>
 	<div id="left">
+		<h2 align="center">Welcome </h2>
 		<?php 
 		if(isset($_GET['insert_product'])){
 			include("insert_product.php");
@@ -58,3 +70,4 @@
 </div>
 </body>
 </html>
+<?php } ?>

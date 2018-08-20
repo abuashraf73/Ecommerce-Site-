@@ -11,6 +11,10 @@
 	</tr>
 	<?php
 	include("includes/db.php");
+	if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
+}
+else{
 	$get_c = "select * from customers";
 	$run_c = mysqli_query($con, $get_c);
 	$i = 0;
@@ -34,3 +38,4 @@
 }
 	?>
 </table>
+<?php } ?>
