@@ -19,7 +19,7 @@
 			}
 
 }
-				?>
+	?>
 
 
 
@@ -39,8 +39,12 @@
   <input type="hidden" name="item_name" value="<?php echo $product_name; ?>">
   <input type="hidden" name="amount" value="<?php echo $total;  ?>">
   <input type="hidden" name="currency_code" value="USD">
+
+
  <input type="hidden" name="return" value="localhost/482/482Main/paypal_success.php">
-  <input type="hidden" name="cancel_return" value="localhost/482/482Main/paypal_cancel.php">
+ <input type="hidden" name="cancel_return" value="localhost/482/482Main/paypal_cancel.php">
+
+
   <!-- Display the payment button. -->
   <input type="image" name="submit" border="0"
   src="https://www.paypalobjects.com/webstatic/mktg/wright/ecommerce/expresscheckout_buttons.png"
