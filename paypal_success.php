@@ -10,7 +10,8 @@ session_start();
 <body>
 	<?php //this is all for product details
 include("admin_area/includes/db.php");
-$total = 0; // agei instantiate kore dilam j zero
+include("functions/functions.php");
+	$total = 0; // agei instantiate kore dilam j zero
 	global $con;
 	$ip=getIp();
 	$sel_price = "select * from cart where ip_add='$ip'";
@@ -27,7 +28,22 @@ $total = 0; // agei instantiate kore dilam j zero
 				$values= array_sum($product_price); //oi uporer array er sumation kore show korbe akta value..like total value 
 				$total+=$values;
 		
-		} }
+			} }
+			//this is for getting the quantity 
+			$get_qty = "select * from cart where p_id='$pro_id'";
+			$run_qty = mysqli_query($con, $get_qty); 
+			$row_qty = mysqli_fetch_array($run_qty);
+			$qty = $row_qty['qty'];
+			if($qty == 0){
+				$qty =1;
+			}
+			else
+			{
+				$qty=$qty;
+				$total = $total* $qty;
+			}
+
+
 		//this is about the customer
 		$user = $_SESSION['c_email'];
         $get_c = "select * from customers where customer_email = '$user'";
@@ -39,13 +55,25 @@ $total = 0; // agei instantiate kore dilam j zero
 
         $amount = $_GET['amt'];
         $currency = $_GET['cc'];
-        $trx = $_GET['tx'];
+        $trx_id = $_GET['tx'];
+//inserting the payment to the database table
+        $insert_payment = "insert into payment(amount, customer_id, product_id,trx_id, currency, date) values('$amount','$c_id','$pro_id','$trx_id','$currency',NOW())";
+
+        $run_payment = mysqli_query($con, $insert_payment);
+//inserting the order into database
+        $insert_order ="insert into orders (p_id,c_id,qty,order_date) values('$pro_id','$c_id','$qty',NOW())";
+        $run_order = mysqli_query($con, $insert_order);
+
+        //removing the products from cart
+        $empty_cart = "delete from cart";
+        $run_cart = mysqli_query($con, $empty_cart);
+
         if($amount == $total){
-        	echo "<h1>Welcome: ". $_SESSION['customer_email']."Your payment was Successful</h1>";
+        	echo "<h1>Welcome: ". $_SESSION['customer_email']."<br>". "Your payment was Successful</h1>";
         	echo "<a href='localhost/482/482Main/myaccount.php'>Go to my Account</a>";
         }
         else{
-        	echo "<h2>Welcome Guest, Payment Failed";
+        	echo "<h2>Welcome Guest, Payment Failed</h2>";
         	echo "<a href='localhost/482/482Main/home.php'>Go Back to home page</a>";
 
         }
