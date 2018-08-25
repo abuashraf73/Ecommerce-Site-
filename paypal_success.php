@@ -56,12 +56,13 @@ include("functions/functions.php");
         $amount = $_GET['amt'];
         $currency = $_GET['cc'];
         $trx_id = $_GET['tx'];
+        $invoice = mt_rand();
 //inserting the payment to the database table
         $insert_payment = "insert into payment(amount, customer_id, product_id,trx_id, currency, date) values('$amount','$c_id','$pro_id','$trx_id','$currency',NOW())";
 
         $run_payment = mysqli_query($con, $insert_payment);
 //inserting the order into database
-        $insert_order ="insert into orders (p_id,c_id,qty,order_date) values('$pro_id','$c_id','$qty',NOW())";
+        $insert_order ="insert into orders (p_id,c_id,qty,invoice_no,order_date, status) values('$pro_id','$c_id','$qty','$invoice',NOW(),'in progress')";
         $run_order = mysqli_query($con, $insert_order);
 
         //removing the products from cart
@@ -81,3 +82,14 @@ include("functions/functions.php");
  ?>
 </body>
 </html>
+<!-- this part is for automated email sending -->
+<?php
+$headers = "MIME-Version: 1.0". "\r\n";
+$headers.="Content-type:text/html:charset=UTF-8"."\r\n";
+$headers.='From: <sales@onlineshoppers.com>'."\r\n";
+$subject="Order details";
+$message ="<html>
+<p>
+Hello Dear <b></b>"
+
+ ?>

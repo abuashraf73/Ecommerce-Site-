@@ -74,7 +74,7 @@ span.psw {
 </head>
 <body>
 
-<h1 align="center">Admin Login</h1>
+<h1 align="center">Admin Panel</h1>
 <h2 style="color: black; text-align: center;"><?php echo @$_GET['not_admin']; ?></h2>
 <form method="post" action="login.php">
  
@@ -115,6 +115,7 @@ if(isset($_POST['login'])){
     }
     else{
       $_SESSION['user_email'] = $email;
+      echo "<script>alert('Welcome back..')</script>";
       echo "<script>window.open('index.php?Logged_in=You have successfully logged in','_self')</script>";
     }
 }

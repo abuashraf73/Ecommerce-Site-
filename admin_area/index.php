@@ -51,11 +51,17 @@ else{
 		}
 		if(isset($_GET['view_customers'])){
 			include("view_customers.php");
+		}
+		if(isset($_GET['view_orders'])){
+			include("view_orders.php");
+		}
+		if(isset($_GET['view_payments'])){
+			include("view_payments.php");
 		}?>
 	</div>
 	<div id="right"><br>
 <h2 style="text-align:center;"><u>Manage Content</u></h2>
-<br>
+
 <a href="index.php?insert_product">Insert Product</a>
 <a href="index.php?view_product">View Products</a>
 <a href="index.php?insert_cat">Insert Category</a>
@@ -64,10 +70,23 @@ else{
 <a href="index.php?view_types">View All Types</a>
 <a href="index.php?view_customers">View Customers</a>
 <a href="index.php?view_orders">View Orders</a>
-<a href="index.php??view_payment">View Payment</a>
+<a href="index.php?view_payments">View Payment</a>
 <a href="logout.php">Log out</a>
 	</div>
 </div>
 </body>
 </html>
+<?php 
+		include("includes/db.php");
+		if(isset($_GET['confirm_order'])){
+		$get_id = $_GET['confirm_order'];
+		$status ='completed';
+		$update_order="update orders set status='$status' where order_id='$get_id'";
+		$run_update = mysqli_query($con, $update_order);
+		if($run_update){
+		echo "<script>alert('order was updated')</script>";
+		echo "<script>window.open('index.php?view_orders','_self')</script>";
+	}
+	}
+ ?>
 <?php } ?>
