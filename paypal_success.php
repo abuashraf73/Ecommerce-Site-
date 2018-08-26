@@ -6,6 +6,11 @@ session_start();
 <html>
 <head>
 	<title>Payment Successful</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<?php //this is all for product details
@@ -24,6 +29,7 @@ include("functions/functions.php");
 				$product_price= array($pp_price['product_price']); //that certain user joto product cart a add korsilo segula sob k akta array te rakhlam
 
 				$product_id = $pp_price['product_id'];
+				$pro_name = $pp_price['product_name'];
 
 				$values= array_sum($product_price); //oi uporer array er sumation kore show korbe akta value..like total value 
 				$total+=$values;
@@ -50,7 +56,8 @@ include("functions/functions.php");
         $run_c= mysqli_query($con,$get_c);
         $row_c = mysqli_fetch_array($run_c);
         $c_id = $row_c['customer_id'];
-
+        $c_email = $row_c['customer_email'];
+        $c_name = $row_c['customer_name'];
         //payment details from paypal
 
         $amount = $_GET['amt'];
@@ -84,12 +91,40 @@ include("functions/functions.php");
 </html>
 <!-- this part is for automated email sending -->
 <?php
-$headers = "MIME-Version: 1.0". "\r\n";
-$headers.="Content-type:text/html:charset=UTF-8"."\r\n";
-$headers.='From: <sales@onlineshoppers.com>'."\r\n";
+$to ="$c_email";
 $subject="Order details";
 $message ="<html>
 <p>
-Hello Dear <b></b>"
-
+Hello Dear <b style='color:blue;'>$c_name</b>,
+You have ordered some products from our website <u>Onlineshopper</u>. Please find your order details 
+below and pay the dues as soon as possible, so we can 
+proceed your order. Thank you! :) Happy shopping. </p>
+<table class='table'>
+    <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Invoice No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>$pro_name</td>
+        <td>$qty</td>
+        <td>$amount</td>
+        <td>$invoice</td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <h3> Please go to your account and pay the dues</h3>
+  <h2> <a href='localhost/482/482Main/home.php'>Click here</a> to login to your account</h2>
+  <h3>Thank you for your order</h3>
+  </html>
+  ";
+  $headers ="From: inphplab@example.com"."\r\n";
+mail($to,$subject,$content,$headers);
  ?>
