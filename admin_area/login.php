@@ -97,7 +97,8 @@ span.psw {
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
-
+<hr>
+ <h2 align="center"><a href="../home.php">Back to home page</a></h2>
 </body>
 </html>
 <?php 

@@ -108,9 +108,9 @@ if(isset($_POST['login'])){
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password">
             <input type="submit" name="login" value="Login">
-           <h1> <a href="customer_register.php">Sign up</a> <br></h1> 
-            <a href="checkout.php?forgot_pass">Forget Password? </a>
-            </form>
+            
+                        </form>
+                        <h1><a href="customer_register.php">Dont have an account?? Sign up! </a> <br></h1>
         </div>
 
   

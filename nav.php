@@ -38,11 +38,10 @@
 <body>
 	<ul id="menu">
 	      <li><a href="home.php">Home</a></li>
-	      <li><a href="myaccount.php">My Account</a></li>
 	      <li><a href="cart.php">My Cart</a></li>
-	      <li><a href="customer_register.php">Sign Up</a></li>
+	      <li><a href="myaccount.php">My Account</a></li>
 	      <li><a href="aboutus.php">About Us</a></li>
-	    
+	     <li><a href="admin_area/login.php">Admin Panel</a></li>
 	    	<!--Search bar section -->
 	    	<div id="form">
 	    		<form method="get" action="search_result.php" enctype="multipart/form-data">

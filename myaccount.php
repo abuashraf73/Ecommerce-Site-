@@ -42,7 +42,7 @@ include("functions/functions.php"); ?>
                          <li><a href="myaccount.php?my_orders">My orders</a></li>
                          <li><a href="myaccount.php?edit_account">Edit Account</a></li>
                        
-                        <li><a href="myaccount.php?delete_account">Delete Account</a></li>
+                   
 
                     </ul>
                     <br>
@@ -92,10 +92,7 @@ include("functions/functions.php"); ?>
                       include("edit_account.php");
                     }
                     
-                    if(isset($_GET['delete_account'])){
-                      include("delete_account.php");
-                    
-                    }
+                   
                     if(isset($_GET['my_orders'])){
                       include("my_orders.php");
                     
