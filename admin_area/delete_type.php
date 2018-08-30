@@ -1,6 +1,6 @@
 <?php
 include("includes/db.php");
-if(!isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
+if(isset($_SESSION['user_email'])){   //if the user is not admin then this page goes in the loop
 	echo"<script>window.open('login.php?not_admin=You are not an admin','_self')</script>";
 }
 else{

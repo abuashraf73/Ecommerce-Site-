@@ -90,7 +90,7 @@ include("functions/functions.php");
 </body>
 </html>
 <!-- this part is for automated email sending -->
-<?php
+<!--<?php
 $to ="$c_email";
 $subject="Order details";
 $message ="<html>
@@ -127,4 +127,4 @@ proceed your order. Thank you! :) Happy shopping. </p>
   ";
   $headers ="From: inphplab@example.com"."\r\n";
 mail($to,$subject,$content,$headers);
- ?>
+ ?> -->

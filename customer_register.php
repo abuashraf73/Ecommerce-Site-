@@ -101,10 +101,11 @@ if(isset($_POST['register'])){
     $c_loc = $_POST['c_loc'];
    
     $c_password = $_POST['c_password'];
-
+   
+ $str = md5($c_password,TRUE);
   
 //for inserting the data of customer into database
-    $insert_c ="INSERT INTO customers(customer_ip,customer_name,customer_email,customer_pass,customer_city, customer_location,customer_contact)   VALUES ('$ip','$c_name','$c_email','$c_password','$c_city','$c_loc','$c_phone')";
+    $insert_c ="INSERT INTO customers(customer_ip,customer_name,customer_email,customer_pass,customer_city, customer_location,customer_contact)   VALUES ('$ip','$c_name','$c_email','$str','$c_city','$c_loc','$c_phone')";
     $run_c = mysqli_query($con, $insert_c);
     $sel_cart = "select * from cart where ip_add='$ip'";
     $run_cart = mysqli_query($con, $sel_cart);
