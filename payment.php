@@ -57,8 +57,8 @@
   <input type="hidden" name="currency_code" value="USD">
 
 
- <input type="hidden" name="return" value="http:127.0.0.1/482/482Main/paypal_success.php">
- <input type="hidden" name="cancel_return" value="localhost/482/482Main/paypal_cancel.php">
+ <input type="hidden" name="return" value="http:127.0.0.1/Ecommerce-Site-/paypal_success.php">
+ <input type="hidden" name="cancel_return" value="localhost/Ecommerce-Site-/paypal_cancel.php">
 
 
   <!-- Display the payment button. -->
